@@ -1,41 +1,59 @@
-class Personagem {
-  constructor(imagem) {
-    this.imagem = imagem;
-    this.larguraPersonagem = 110;
-    this.alturaPersonagem = 135;
-    this.alturaImagemPersonagem = 220;
-    this.larguraImagemPersonagem = 270;
-    this.numAlturaLarguraFramesPersonagem = 4;
-    this.alturaFrameAtual = 0;
-    this.larguraFrameAtual = 0;
-  }
-
-  exibe() {
-    image(
-      this.imagem,
-      0,
-      height - this.alturaPersonagem,
-      this.larguraPersonagem,
-      this.alturaPersonagem,
-      this.alturaFrameAtual * this.alturaImagemPersonagem,
-      this.larguraFrameAtual * this.larguraImagemPersonagem,
-      this.alturaImagemPersonagem,
-      this.larguraImagemPersonagem
+class Personagem extends Animacao {
+  constructor(
+    imagem,
+    posicaoX,
+    posicaoY,
+    larguraPersonagem,
+    alturaPersonagem,
+    alturaSprite,
+    larguraSprite,
+    qtdColunasSpritesPersonagem,
+    qtdLinhasSpritesPersonagem
+  ) {
+    super(
+      imagem,
+      posicaoX,
+      posicaoY,
+      larguraPersonagem,
+      alturaPersonagem,
+      alturaSprite,
+      larguraSprite,
+      qtdColunasSpritesPersonagem,
+      qtdLinhasSpritesPersonagem
     );
-    
-    this.anima();
+
+    this.posicaoYInicial = this.posicaoY;
+    this.velocidadePulo = 0;
+    this.alturaPulo = 30;
+    this.gravidade = 3;
   }
 
-  anima() {
-    this.alturaFrameAtual += 1;
+  pula() {
+    this.velocidadePulo = -this.alturaPulo;
+  }
 
-    if (this.alturaFrameAtual >= this.numAlturaLarguraFramesPersonagem) {
-      this.alturaFrameAtual = 0;
-      this.larguraFrameAtual += 1;
-    }
+  aplicaGravidade() {
+    this.posicaoY += this.velocidadePulo;
+    this.velocidadePulo += this.gravidade;
 
-    if (this.larguraFrameAtual >= this.numAlturaLarguraFramesPersonagem) {
-        this.larguraFrameAtual = 0;
+    if (this.posicaoY > this.posicaoYInicial) {
+      this.posicaoY = this.posicaoYInicial;
     }
+  }
+
+  estaColidindo(inimigo) {
+    const precisao = .7;
+    const colidiu = collideRectRect(
+      this.posicaoX,
+      this.posicaoY,
+      this.larguraPersonagem * precisao,
+      this.alturaPersonagem * precisao,
+      inimigo.posicaoX,
+      inimigo.posicaoY,
+      inimigo.larguraPersonagem * precisao,
+      inimigo.alturaPersonagem * precisao
+    );
+
+    return colidiu;
   }
 }
