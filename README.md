@@ -5,7 +5,9 @@ Este jogo no formato endless foi criado durante um treinamento de imersão em de
 Todos as imagens utilizadas para criação do jogo foram disponibilizadas pelos instrutores de forma gratuita e podem ser encontradas neste [link](https://pipoya.itch.io/pipoya-free-2d-game-character-sprites). 
 
 ##
-Jogue aqui: [https://gmoreirarosa.github.io/ImersaoGameDev](https://gmoreirarosa.github.io/ImersaoGameDev/index.html)
+Jogue aqui: 
+
+[https://gmoreirarosa.github.io/ImersaoGameDev](https://gmoreirarosa.github.io/ImersaoGameDev/index.html)
 ##
 Controles:
 
