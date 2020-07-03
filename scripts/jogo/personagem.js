@@ -34,6 +34,7 @@ class Personagem extends Animacao {
   pula() {
     if (this.pulos < this.qtdMaxPulos) {
       this.velocidadePulo = -this.alturaPulo;
+      somPulo.play();
       this.pulos++;
     }
   }

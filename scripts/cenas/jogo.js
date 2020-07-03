@@ -13,8 +13,8 @@ class Jogo {
   setup() {
     createCanvas(windowWidth, windowHeight);
     this.cenario = new Cenario(imagemCenario, 3);
-    this.pontuacao = new Pontuacao();
     this.vida = new Vida(fita.configuracoes.qtdVidaMaxima,fita.configuracoes.qtdVidaInicial);
+    this.pontuacao = new Pontuacao();
 
     this.personagem = new Personagem(
       imagemPersonagem,
@@ -69,7 +69,6 @@ class Jogo {
   keyPressed(key) {
     if (key === "ArrowUp") {
       this.personagem.pula();
-      somPulo.play();
     }
   }
 
