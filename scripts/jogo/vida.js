@@ -26,7 +26,7 @@ class Vida {
   }
 
   recuperarVida() {
-    if (this.qtdAtual <= this.qtdMaxima) {
+    if (this.qtdAtual < this.qtdMaxima) {
       this.qtdAtual++;
     }
   }

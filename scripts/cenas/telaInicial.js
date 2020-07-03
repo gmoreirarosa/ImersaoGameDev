@@ -1,18 +1,18 @@
 class TelaInicial {
   constructor() {
     this.cenario;
-    this.gerenciadorBotao;
+    this.botaoJogar;
   }
 
   setup() {
-    createCanvas(windowWidth, windowHeight);    
-    this.botaoJogar = new GerenciadorBotao("Jogar", width / 2, height / 7 * 5, this._onClickBotaoJogar);
+    createCanvas(windowWidth, windowHeight);
+    this.botaoJogar = new GerenciadorBotao("Jogar", width / 2, (height / 7) * 5, this._onClickBotaoJogar);
     this.cenario = new Cenario(imagemTelaInicial, 0);
   }
 
   draw() {
     this.cenario.exibe();
-    this._titulo();    
+    this._titulo();
     this.botaoJogar.draw();
   }
 
@@ -28,5 +28,4 @@ class TelaInicial {
   _onClickBotaoJogar() {
     cenaAtual = "jogo";
   }
-
 }

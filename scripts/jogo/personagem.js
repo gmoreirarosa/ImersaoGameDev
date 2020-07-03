@@ -21,8 +21,8 @@ class Personagem extends Animacao {
       qtdColunasSpritesPersonagem,
       qtdLinhasSpritesPersonagem
     );
-
     this.posicaoYInicial = this.posicaoY;
+    this.velocidadeX = width / 100;
     this.velocidadePulo = 0;
     this.alturaPulo = 50;
     this.gravidade = 6;
@@ -39,6 +39,18 @@ class Personagem extends Animacao {
     }
   }
 
+  andaPraFrente() {
+    if (this.posicaoX < width - this.larguraPersonagem) {
+      this.posicaoX += this.velocidadeX;
+    }
+  }
+
+  andaPraTras() {
+    if (this.posicaoX > 0) {
+      this.posicaoX -= this.velocidadeX;
+    }
+  }
+
   aplicaGravidade() {
     this.posicaoY += this.velocidadePulo;
     this.velocidadePulo += this.gravidade;
@@ -51,9 +63,10 @@ class Personagem extends Animacao {
 
   ativarInvencibilidade() {
     this.invencivel = true;
-
+    this.piscar();
     setTimeout(() => {
       this.invencivel = false;
+      this.pararPiscar();
     }, 2000);
   }
 
@@ -63,15 +76,14 @@ class Personagem extends Animacao {
     }
 
     const precisao = 0.7;
-    const colidiu = collideRectRect(
+    const colidiu = collideRectCircle(
       this.posicaoX,
       this.posicaoY,
-      this.larguraPersonagem * precisao,
-      this.alturaPersonagem * precisao,
-      inimigo.posicaoX,
-      inimigo.posicaoY,
-      inimigo.larguraPersonagem * precisao,
-      inimigo.alturaPersonagem * precisao
+      this.larguraPersonagem,
+      this.alturaPersonagem,
+      inimigo.posicaoX + inimigo.larguraPersonagem / 2 + 15,
+      inimigo.posicaoY + inimigo.alturaPersonagem / 2,
+      inimigo.larguraPersonagem * precisao
     );
 
     return colidiu;

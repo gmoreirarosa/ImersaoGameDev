@@ -1,7 +1,6 @@
 class Jogo {
   constructor() {
     this.cenario;
-    this.pontuacao;
     this.personagem;
     this.vida;
     this.inimigos = [];
@@ -13,8 +12,11 @@ class Jogo {
   setup() {
     createCanvas(windowWidth, windowHeight);
     this.cenario = new Cenario(imagemCenario, 3);
-    this.vida = new Vida(fita.configuracoes.qtdVidaMaxima,fita.configuracoes.qtdVidaInicial);
-    this.pontuacao = new Pontuacao();
+    this.vida = new Vida(
+      fita.configuracoes.qtdVidaMaxima,
+      fita.configuracoes.qtdVidaInicial
+    );
+    pontuacao = new Pontuacao();
 
     this.personagem = new Personagem(
       imagemPersonagem,
@@ -73,12 +75,19 @@ class Jogo {
   }
 
   draw() {
+    if (keyIsDown(LEFT_ARROW)) this.personagem.andaPraTras();
+    if (keyIsDown(RIGHT_ARROW)) this.personagem.andaPraFrente();
+
     this.cenario.exibe();
     this.cenario.move();
 
     this.vida.exibe();
-    this.pontuacao.exibe();
-    this.pontuacao.adicionarPontos(0.1);
+    pontuacao.exibe();
+    pontuacao.adicionarPontos(0.1);
+    
+    if (pontuacao.pontos.toFixed(2) % fita.configuracoes.pontuacaoNecessariaGanharVida === 0) {
+      this.vida.recuperarVida();
+    }
 
     this.personagem.exibe();
     this.personagem.aplicaGravidade();
@@ -98,10 +107,10 @@ class Jogo {
 
     if (this.personagem.estaColidindo(this.inimigoAtual)) {
       this.vida.perderVida();
+      somColisao.play();
       this.personagem.ativarInvencibilidade();
       if (this.vida.qtdAtual === 0) {
-        image(imagemGameOver, width / 2 - 200, height / 2);
-        noLoop();
+        cenaAtual = "gameOver";
       }
     }
   }

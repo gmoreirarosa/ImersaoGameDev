@@ -9,6 +9,7 @@ function preload() {
   imagemVida = loadImage("./imagens/assets/coracao.png");
   somAmbiente = loadSound("./sons/trilha_jogo.mp3");
   somPulo = loadSound("./sons/som_pulo.mp3");
+  somColisao = loadSound("./sons/som_colisao.mp3");
   fontTelaInicial = loadFont("./imagens/assets/fonteTelaInicial.otf");
   fita = loadJSON('fita/fita.json');
 }

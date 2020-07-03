@@ -12,7 +12,7 @@ class GerenciadorBotao {
     this.botao.center("horizontal");
     this.botao.mousePressed(() => {
       this.onClick();
-      this.botao.remove();  
+      this.botao.remove();
     });
   }
 }

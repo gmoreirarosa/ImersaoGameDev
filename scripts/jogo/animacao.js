@@ -11,7 +11,7 @@ class Animacao {
     qtdLinhasSpritesPersonagem
   ) {
     this.imagem = imagem;
-    this.posicaoX= posicaoX;
+    this.posicaoX = posicaoX;
     this.posicaoY = posicaoY;
     this.larguraPersonagem = larguraPersonagem;
     this.alturaPersonagem = alturaPersonagem;
@@ -21,6 +21,8 @@ class Animacao {
     this.qtdLinhasSpritesPersonagem = qtdLinhasSpritesPersonagem;
     this.colunaAtualSprite = 0;
     this.linhaAtualSprite = 0;
+    this.estaPiscando = false;
+    this.contadorPiscagem = 0;
   }
 
   exibe() {
@@ -35,8 +37,24 @@ class Animacao {
       this.alturaSprite,
       this.larguraSprite
     );
-    
+
     this.anima();
+  }
+
+  piscar() {
+    this.estaPiscando = true;
+    if (frameCount % 2 === 0) {
+      this.imagem.filter(INVERT);
+      this.contadorPiscagem += 1;
+    }
+  }
+
+  pararPiscar() {
+    this.estaPiscando = false;
+    if (this.contadorPiscagem % 2 !== 0) {
+      this.imagem.filter(INVERT);
+      this.contadorPiscagem = 0;
+    }
   }
 
   anima() {
@@ -48,8 +66,11 @@ class Animacao {
     }
 
     if (this.linhaAtualSprite >= this.qtdLinhasSpritesPersonagem) {
-        this.linhaAtualSprite = 0;
+      this.linhaAtualSprite = 0;
+    }
+
+    if (this.estaPiscando) {
+      this.piscar();
     }
   }
-
 }

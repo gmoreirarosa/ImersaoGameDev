@@ -1,7 +1,8 @@
 {
   "configuracoes": {
     "qtdVidaMaxima": 5,
-    "qtdVidaInicial": 3
+    "qtdVidaInicial": 3,
+    "pontuacaoNecessariaGanharVida": 50
   },
   "mapa": [
     {
@@ -13,8 +14,16 @@
       "velocidade": 80
     },
     {
+      "inimigo": 0,
+      "velocidade": 50
+    },
+    {
       "inimigo": 2,
       "velocidade": 20
+    },
+    {
+      "inimigo": 1,
+      "velocidade": 60
     },
     {
       "inimigo": 2,
