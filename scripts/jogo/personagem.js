@@ -24,12 +24,18 @@ class Personagem extends Animacao {
 
     this.posicaoYInicial = this.posicaoY;
     this.velocidadePulo = 0;
-    this.alturaPulo = 30;
-    this.gravidade = 3;
+    this.alturaPulo = 50;
+    this.gravidade = 6;
+    this.pulos = 0;
+    this.qtdMaxPulos = 2;
+    this.invencivel = false;
   }
 
   pula() {
-    this.velocidadePulo = -this.alturaPulo;
+    if (this.pulos < this.qtdMaxPulos) {
+      this.velocidadePulo = -this.alturaPulo;
+      this.pulos++;
+    }
   }
 
   aplicaGravidade() {
@@ -38,11 +44,24 @@ class Personagem extends Animacao {
 
     if (this.posicaoY > this.posicaoYInicial) {
       this.posicaoY = this.posicaoYInicial;
+      this.pulos = 0;
     }
   }
 
+  ativarInvencibilidade() {
+    this.invencivel = true;
+
+    setTimeout(() => {
+      this.invencivel = false;
+    }, 2000);
+  }
+
   estaColidindo(inimigo) {
-    const precisao = .7;
+    if (this.invencivel) {
+      return false;
+    }
+
+    const precisao = 0.7;
     const colidiu = collideRectRect(
       this.posicaoX,
       this.posicaoY,

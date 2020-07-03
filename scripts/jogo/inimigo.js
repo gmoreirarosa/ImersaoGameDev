@@ -21,13 +21,23 @@ class Inimigo extends Animacao {
       qtdColunasSpritesPersonagem,
       qtdLinhasSpritesPersonagem
     );
+
+    this.velocidade = 5;
   }
 
-  move(velocidade) {
-    this.posicaoX -= velocidade;
+  move() {
+    this.posicaoX = this.posicaoX - this.velocidade;
+  }
 
-    if (this.posicaoX < -this.larguraPersonagem) {
-      this.posicaoX = width;
-    }
+  reaparece() {
+    this.posicaoX = width;
+  }
+
+  setarVelocidade(velocidade) {
+    this.velocidade = velocidade;
+  }
+
+  visivel() {
+    return this.posicaoX < -this.larguraPersonagem;
   }
 }
