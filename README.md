@@ -20,6 +20,7 @@ Funcionalidas extras, não desenvolvidas durante o treinamento:
 
 - Andar para frente e para trás.
 - Som de colisão.
+- Efeito visual de invencibilidade após colisão.
 - Ganhar/recuperar vida a cada X pontos.
 
 Rodar o jogo localmente:
