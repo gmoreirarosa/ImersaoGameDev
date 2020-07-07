@@ -6,7 +6,7 @@ class GameOver {
 
   setup() {
     createCanvas(windowWidth, windowHeight);
-    this.cenario = new Cenario(imagemCenario, 0);
+    this.cenario = new Cenario(imagensCenarios, 0);
   }
 
   draw() {

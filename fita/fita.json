@@ -2,7 +2,8 @@
   "configuracoes": {
     "qtdVidaMaxima": 5,
     "qtdVidaInicial": 3,
-    "pontuacaoNecessariaGanharVida": 50
+    "pontuacaoNecessariaGanharVida": 50,    
+    "pontuacaoNecessariaTrocaCenario": 5
   },
   "mapa": [
     {

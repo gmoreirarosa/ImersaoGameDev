@@ -7,7 +7,7 @@ class TelaInicial {
   setup() {
     createCanvas(windowWidth, windowHeight);
     this.botaoJogar = new GerenciadorBotao("Jogar", width / 2, (height / 7) * 5, this._onClickBotaoJogar);
-    this.cenario = new Cenario(imagemTelaInicial, 0);
+    this.cenario = new Cenario([imagemTelaInicial], 0);
   }
 
   draw() {

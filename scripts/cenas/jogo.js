@@ -11,7 +11,7 @@ class Jogo {
 
   setup() {
     createCanvas(windowWidth, windowHeight);
-    this.cenario = new Cenario(imagemCenario, 3);
+    this.cenario = new Cenario(imagensCenarios, 3);
     this.vida = new Vida(
       fita.configuracoes.qtdVidaMaxima,
       fita.configuracoes.qtdVidaInicial

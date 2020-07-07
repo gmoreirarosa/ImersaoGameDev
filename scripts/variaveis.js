@@ -1,4 +1,4 @@
-let imagemCenario;
+let imagensCenarios;
 let imagemTelaInicial;
 let imagemPersonagem;
 let imagemInimigoGotinha;
