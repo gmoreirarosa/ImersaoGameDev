@@ -22,6 +22,7 @@ Funcionalidas extras, não desenvolvidas durante o treinamento:
 - Som de colisão.
 - Efeito visual de invencibilidade após colisão.
 - Ganhar/recuperar vida a cada X pontos.
+- Mudança de cenário a cada X pontos.
 
 Rodar o jogo localmente:
 
